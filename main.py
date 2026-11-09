@@ -6,7 +6,6 @@ from langchain.agents import create_agent
 
 load_dotenv()
 
-
 def main():
     print("Hello from langchain-course!")
 
@@ -40,12 +39,6 @@ Musk's political activities, views, and statements have made him a polarizing fi
     # temperature=0.5,
     # )
 
-    # llm = create_agent(
-    #     model="openai:gpt-6-luna",
-    #     # tools=[get_weather],
-    #     system_prompt="You are a helpful assistant",
-    # )
-
     chain = summary_promt_template | llm
 
     response = chain.invoke(input={"information": information})
@@ -54,3 +47,19 @@ Musk's political activities, views, and statements have made him a polarizing fi
 
 if __name__ == "__main__":
     main()
+
+    # def get_weather(city: str) -> str:
+    #     """Get weather for a given city."""
+    #     return f"It's always sunny in {city}!"
+
+
+    # agent = create_agent(
+    #     model="openai:gpt-6-luna",
+    #     tools=[get_weather],
+    #     system_prompt="You are a helpful assistant",
+    # )
+
+    # # Run the agent
+    # print(agent.invoke(
+    #     {"messages": [{"role": "user", "content": "What is the weather in San Francisco?"}]}
+    # ))
