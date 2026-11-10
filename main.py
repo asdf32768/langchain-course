@@ -1,10 +1,12 @@
 import os
+
 from dotenv import load_dotenv
+from langchain.agents import create_agent
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_agent
 
 load_dotenv()
+
 
 def main():
     print("Hello from langchain-course!")
@@ -43,7 +45,8 @@ Musk's political activities, views, and statements have made him a polarizing fi
 
     response = chain.invoke(input={"information": information})
 
-    print(response.content)    
+    print(response.content)
+
 
 if __name__ == "__main__":
     main()
@@ -51,7 +54,6 @@ if __name__ == "__main__":
     # def get_weather(city: str) -> str:
     #     """Get weather for a given city."""
     #     return f"It's always sunny in {city}!"
-
 
     # agent = create_agent(
     #     model="openai:gpt-6-luna",
