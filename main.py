@@ -5,6 +5,7 @@ from langchain.tools import tool
 from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from tavily import TavilyClient
+from langchain_tavily import TavilySearch
 
 load_dotenv()
 
@@ -24,12 +25,14 @@ def search(query: str) -> str:
     return tavily.search(query=query)
 
 llm = ChatOpenAI(model="gpt-6-luna")
-tools = [search]
+# tools = [search]
+tools = [TavilySearch()]
 agent = create_agent(model=llm, tools=tools)
 
 def main():
     print("Hello search-agent!")
-    result = agent.invoke({"messages": HumanMessage(content="What is the weather today in random place? Utilize the `search` tool")})
+    result = agent.invoke({"messages": 
+    HumanMessage(content="Какой прогноз погоды в Испании?")})
     print(result)
 
 if __name__ == "__main__":
